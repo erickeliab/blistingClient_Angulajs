@@ -1,0 +1,23 @@
+
+.heading{
+    position: relative;
+    margin-top: 2rem;
+    left: 10%;
+    font-style: initial;
+    padding-top: 3rem;
+    margin-bottom: 4 em;
+}
+
+p{
+    position: relative;
+    margin: 2 rem;
+    padding: 2 em;
+    
+}
+
+
+div.sec{
+    position: relative;
+    margin-top: 3 em;
+    
+}

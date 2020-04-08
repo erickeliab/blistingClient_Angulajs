@@ -1,0 +1,296 @@
+<section class="container">
+    
+        <ol class="breadcrumb col-md-12">
+            <li ><a class="btn" (click)="dash()">Dashboard</a></li>
+           
+            <li ><a class="btn" (click)="dash()">Your Businesses</a></li>
+            
+            <li ><a class="btn" (click)="newl()">Add Business</a></li>
+           
+            <li ><a class="btn" (click)="oneser()">View Profile</a></li>
+           
+            <li ><a class="btn" (click)="profed()">Edit Profile</a></li>
+          </ol>
+     
+    <!-- View all the businesses -->
+    <ng-container *ngIf="data">
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title"> You Businesses</h3>
+    
+                  <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+    
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i>Search</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0" style="height: 300px;">
+                  <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Company Name</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                        
+                      <tr *ngFor="let c  of Businesses">
+                        <td>{{c.id}}</td>
+                        <td>{{c.Company}}</td>
+                        <td><a class="btn" (click)="oneser(c)">View</a></td>
+                        <td><a class="btn" (click)="update(c)">Update</a></td>
+                        <td><a class="btn" (click)="delser(c)">Delete</a></td> 
+                     </tr>
+                  
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+
+    </ng-container>
+   
+    <ng-container *ngIf="one">
+    
+      <div class="row">
+          <div class="col-12">
+            <div class="card col-12">
+              <div class="card-header">
+                <h3 class="card-title"> Company</h3>
+                <a (click)="dash()" class="col-3 btn">Go Back</a>
+                <a  class="col-3 btn" >Update</a>
+                <a  class="col-3 btn" > Delete</a>
+                
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <ul class="list-group">
+                    <li class="list-group-item">Company : {{temp.Company}}</li>
+                    <li class="list-group-item">location : {{temp.location}}</li>
+                    <li class="list-group-item">Manager : {{temp.Manager}}</li>
+                    <li class="list-group-item"> Phone: {{temp.Phone}}</li>
+                    <li class="list-group-item">fax : {{temp.fax}}</li>
+                    <li class="list-group-item">Lastly Updaated : {{temp.updated_at}}</li>
+                    
+                </ul>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+
+        </ng-container>
+   
+        <ng-container *ngIf="updat">
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card col-12">
+                <div class="card-header">
+                  <h3 class="card-title">Update {{temp.Company}}</h3>
+                  <a href="" class="col-3">Go Back</a>
+                  <a href="" class="col-3"> Delete</a>
+                  
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                
+                <div class="card-body  p-0" >
+                    <form action="../../index.html" method="post">
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" placeholder="Company Name">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-user"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="email" class="form-control" placeholder="Manager">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-envelope"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" placeholder="location">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-lock"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="tel" class="form-control" placeholder="Phone">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-lock"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="tel" class="form-control" placeholder="fax">
+                            <div class="input-group-append">
+                              <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                              </div>
+                            </div>
+                          </div>
+                        <div class="row">
+                          <div class="col-8">
+                            <div class="icheck-primary">
+                              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                              <label for="agreeTerms">
+                               I agree to the <a href="#">terms</a>
+                              </label>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+                          <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                          </div>
+                          <!-- /.col -->
+                        </div>
+                      </form>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+
+        </ng-container>
+    
+        <ng-container *ngIf="del">
+            <div class="row">
+                <div class="col-12">
+                  <div class="card col-12">
+                    <div class="card-header">
+                      <h3 class="card-title">Deleting {{temp.Company}}</h3>
+                      <a href="" class="col-3">Go Back</a>
+                      <a href="" class="col-3">Update</a>
+                      <p>Are you sure you want to delete a company with the following information?</p>
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                        
+                      <ul class="list-group">
+                          <li class="list-group-item">Company</li>
+                          <li class="list-group-item">location</li>
+                          <li class="list-group-item">Manager</li>
+                          <li class="list-group-item">Phone</li>
+                          <li class="list-group-item">fax</li>
+                    
+                          
+                      </ul>
+                     
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="col-4 float-right">
+                        <button class="btn btn-block " style="color: white; background-color: red; margin-top: -2rem;"> Delete</button>
+                    </div>
+                  </div>
+                  
+                  <!-- /.card -->
+                </div>
+
+            </ng-container>
+    
+            <ng-container *ngIf="new">
+
+                <div class="row">
+                    <div class="col-12">
+                      <div class="card col-12">
+                        <div class="card-header">
+                          <h3 class="card-title">Create Company</h3>
+                          <a href="" class="col-3">View all</a>
+                         
+                          
+                          </div>
+                        </div>
+                        <!-- /.card-header -->
+                        
+                        <div class="card-body  p-0" >
+                            <form action="../../index.html" method="post">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control" placeholder="Company Name">
+                                  <div class="input-group-append">
+                                    <div class="input-group-text">
+                                      <span class="fas fa-user"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                  <input type="email" class="form-control" placeholder="Manager">
+                                  <div class="input-group-append">
+                                    <div class="input-group-text">
+                                      <span class="fas fa-envelope"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control" placeholder="location">
+                                  <div class="input-group-append">
+                                    <div class="input-group-text">
+                                      <span class="fas fa-lock"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                  <input type="tel" class="form-control" placeholder="Phone">
+                                  <div class="input-group-append">
+                                    <div class="input-group-text">
+                                      <span class="fas fa-lock"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="tel" class="form-control" placeholder="fax">
+                                    <div class="input-group-append">
+                                      <div class="input-group-text">
+                                        <span class="fas fa-lock"></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                <div class="row">
+                                  <div class="col-8">
+                                    <div class="icheck-primary">
+                                      <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                      <label for="agreeTerms">
+                                       I agree to the <a href="#">terms</a>
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <!-- /.col -->
+                                  <div class="col-4">
+                                    <button type="submit" class="btn btn-block" style="background-color: green; color: white;">Create</button>
+                                  </div>
+                                  <!-- /.col -->
+                                </div>
+                              </form>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                      <!-- /.card -->
+                    </div>
+                </ng-container>
+    
+                
+   
+</section>
